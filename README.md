@@ -1,2 +1,0 @@
-# Gitstore
-test master pull
