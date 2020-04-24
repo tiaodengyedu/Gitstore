@@ -3,10 +3,10 @@ import re
 
 
 def transform(localfile=r'.\cases'):
-    '''
+    """
     对当前目录的cases文件夹下的
     py文件转换为robot文件
-    '''
+    """
     # 查找当前目录的所有文件和文件夹
     for root, dirName, file in os.walk(localfile, topdown=False):
 
@@ -33,13 +33,17 @@ def transform(localfile=r'.\cases'):
                         ofile.write('\nLibrary  ' + '\t'+name + '\t' + 'WITH NAME' + '\t'+'M')
                         fileTransform(sName, ofile, realName[0])
     return '转换成功'
-def fileTransform(sfilePath,fileWritePath,realName,st=False):
+
+
+def fileTransform(sfilePath, fileWritePath, realName, st=False):
     """
     测试用例转换为RF能识别的格式
+
     参数：
     sfilePath:要转换文件路径
     fileWritePath:需写入的的文件对象
     realName:写入文件名
+    st:是否是初始化文件
     """
 
     # 读取文件
@@ -52,26 +56,25 @@ def fileTransform(sfilePath,fileWritePath,realName,st=False):
         # 识别并转换
         for line in s1file.readlines():
             # 测试用例导入
-            c1 = re.search(r'class\s*(c\d+)\s*:', line)
-            if c1:
-                c = c1.group(1)
-                textHeader.append('\nLibrary  ' + '\t'+realName+'.' + c + '\t'+'WITH NAME' + '\t'+c+'\n')
+            C1 = re.search(r'class\s*(C\d+)\s*:', line, re.I)
+            if C1:
+                C = C1.group(1)
+                textHeader.append('\nLibrary  ' + '\t' + realName + '.' + C + '\t'+'WITH NAME' + '\t'+C+'\n')
             # 用例文件标签
-            Tas = re.search(r'force_tags\s*=\s*\[(.*)\]', line)
+            Tas = re.search(r'force_tags\s*=\s*(\[.*\])', line, re.I)
             if Tas:
                 temp1 = Tas.group(1)
-                temp2 = re.sub(r',', '\t', temp1)
-                temp3 = re.sub(r'\'', '', temp2)
-                textHeader.append('\n' + 'Force Tags' + '\t' + temp3 + '\n')
+                temp2 = '\t'.join(eval(temp1))
+                textHeader.append('\n' + 'Force Tags' + '\t' + temp2 + '\n')
             # 单个测试套件的初始化
-            s = re.search(r'def\s*(suite_setup)', line)
+            s = re.search(r'def\s*(suite_setup)', line, re.I)
             if s:
                 textHeader.append('\n'+'Suite Setup    M.suite_setup'+'\n')
-            t = re.search(r'def\s*(suite_teardown)', line)
+            t = re.search(r'def\s*(suite_teardown)', line, re.I)
             if t:
                 textHeader.append('\n'+'Suite Teardown    M.suite_teardown'+'\n')
             # 用例名
-            N1 = re.search(r"name\s*=\s*\'(.*)\'", line)
+            N1 = re.search(r"name\s*=\s*(\'.*\')", line)
             # name = ' '
             if N1:
                 N = N1.group(1)
@@ -79,22 +82,21 @@ def fileTransform(sfilePath,fileWritePath,realName,st=False):
             # 单个用例初始话
             S = re.search(r'def\s*(setup)', line, re.I)
             if S:
-                textBody.append(r'  [Setup]' + '    ' + c + '.setup' + '\n')
+                textBody.append(r'  [Setup]' + '    ' + C + '.setup' + '\n')
             T = re.search(r'def\s*(teardown)', line, re.I)
             if T:
-                textBody.append(r'  [Teardown]' + '    ' + c + '.teardown' + '\n')
+                textBody.append(r'  [Teardown]' + '    ' + C + '.teardown' + '\n')
             # 标签
-            TA = re.search(r'(?<!_)tags\s*=\s*\[(.*)\]', line)
+            TA = re.search(r'(?<!_)tags\s*=\s*(\[.*\])', line)
             if TA:
                 temp1 = TA.group(1)
-                temp2 = re.sub(r',', '\t', temp1)
-                temp3 = re.sub(r'\'', '', temp2)
-                textBody.append('\n'+'  ' + '[Tags]' + '\t' + temp3 + '\n')
+                temp2 = '\t'.join(eval(temp1))
+                textBody.append('\n'+'  ' + '[Tags]' + '\t' + temp2 + '\n')
             # 用例
             TS = re.search(r'def\s*(teststeps)', line, re.I)
             if TS:
                 TS = TS.group(1)
-                textBody.append('\n  ' + c + '.' + TS + '')
+                textBody.append('\n  ' + C + '.' + TS + '')
         for i in textHeader:
             fileWritePath.write(i)
 
