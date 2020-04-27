@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.7.4 on win32)" generated="20200427 21:17:04.099" rpa="false">
+<suite id="s1" name="Cases" source="D:\Program Files (x86)\test-doc\cp\cases">
+<suite id="s1-s1" name="UI-0101" source="D:\Program Files (x86)\test-doc\cp\cases\UI-0101.robot">
+<kw name="Suite Setup" library="M" type="setup">
+<msg timestamp="20200427 21:17:04.335" level="INFO" html="yes">You had select Chrome browser.</msg>
+<msg timestamp="20200427 21:17:04.337" level="INFO" html="yes">The test server url is: http://127.0.0.1/mgr/sign.html</msg>
+<msg timestamp="20200427 21:17:07.867" level="INFO" html="yes">Starting Chrome browser.</msg>
+<msg timestamp="20200427 21:17:09.991" level="INFO" html="yes">Maximize the current window.</msg>
+<msg timestamp="20200427 21:17:09.992" level="INFO" html="yes">Set implicitly wait 10 seconds.</msg>
+<msg timestamp="20200427 21:17:10.571" level="INFO" html="yes">Open url: http://127.0.0.1/mgr/sign.html</msg>
+<status status="PASS" starttime="20200427 21:17:04.333" endtime="20200427 21:17:10.571"></status>
+</kw>
+<test id="s1-s1-t1" name="'UI-0101'">
+<kw name="Teststeps" library="C1">
+<msg timestamp="20200427 21:17:10.586" level="INFO" html="yes">Had find the element '  ' successful by css via value: .form-group.has-feedback </msg>
+<msg timestamp="20200427 21:17:10.620" level="INFO" html="yes">Had find the element '  ' successful by id via value: password</msg>
+<msg timestamp="20200427 21:17:10.630" level="INFO" html="yes">Had find the element '  ' successful by css via value: [class="btn btn-primary btn-block btn-flat"] </msg>
+<msg timestamp="20200427 21:17:10.717" level="INFO" html="yes">Had type ' byhy ' in inputBox</msg>
+<msg timestamp="20200427 21:17:10.810" level="INFO" html="yes">Had type ' 88888888 ' in inputBox</msg>
+<msg timestamp="20200427 21:17:10.873" level="INFO">The element ' 登录 ' was clicked.</msg>
+<msg timestamp="20200427 21:17:10.873" level="INFO" html="yes">已提交用户名，密码</msg>
+<msg timestamp="20200427 21:17:11.874" level="INFO" html="yes">Sleep for 1 seconds</msg>
+<msg timestamp="20200427 21:17:12.009" level="INFO" html="yes">Had find the element '  ' successful by css via value: .sidebar-menu.tree </msg>
+<msg timestamp="20200427 21:17:12.022" level="INFO" html="yes">Had find the element '  ' successful by css via value: span </msg>
+<msg timestamp="20200427 21:17:12.026" level="INFO">Current page title is 白月销售管理系统</msg>
+<msg timestamp="20200427 21:17:12.029" level="INFO" html="yes">
+ *** 检查点 *** 登录检查 
+</msg>
+<msg timestamp="20200427 21:17:12.029" level="INFO">--&gt;通过</msg>
+<msg timestamp="20200427 21:17:12.087" level="INFO" html="yes">
+ *** 检查点 *** 侧边栏文本检查 
+</msg>
+<msg timestamp="20200427 21:17:12.087" level="INFO">--&gt;通过</msg>
+<status status="PASS" starttime="20200427 21:17:10.572" endtime="20200427 21:17:12.087"></status>
+</kw>
+<status status="PASS" starttime="20200427 21:17:10.571" endtime="20200427 21:17:12.087" critical="yes"></status>
+</test>
+<kw name="Suite Teardown" library="M" type="teardown">
+<status status="PASS" starttime="20200427 21:17:12.087" endtime="20200427 21:17:14.342"></status>
+</kw>
+<status status="PASS" starttime="20200427 21:17:04.131" endtime="20200427 21:17:14.342"></status>
+</suite>
+<status status="PASS" starttime="20200427 21:17:04.102" endtime="20200427 21:17:14.343"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="Cases">Cases</stat>
+<stat pass="1" fail="0" id="s1-s1" name="UI-0101">Cases.UI-0101</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
