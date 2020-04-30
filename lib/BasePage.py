@@ -126,8 +126,8 @@ class BasePage:
             elif by == "css" or by == 'css_selector':
                 try:
                     element = self.driver.find_element_by_css_selector(selector)
-                    INFO("Had find the element \'  \' successful "
-                         "by {0} via value: {1} " .format(by, selector))
+                    INFO("Had find the element \' {0} \' successful "
+                         "by {1} via value: {2} " .format(element.text, by, selector))
                 except NoSuchElementException as e:
                     ERROR("NoSuchElementException: {}".format(e))
                     self.get_windows_img()
@@ -148,9 +148,9 @@ class BasePage:
         if ele:
             if by == "i" or by == 'id':
                 try:
-                    element = ele.find_elements_by_id(selector)
-                    INFO("Had find the element \' {0} \' successful by {1} via value: {2}"
-                         .format(element.text, by, selector))
+                    elements = ele.find_elements_by_id(selector)
+                    INFO("Had find the element  successful by {0} via value: {1}"
+                         .format(by, selector))
                 except NoSuchElementException as e:
                     ERROR("NoSuchElementException: {}".format(e))
                     self.get_windows_img()  # take screenshot
@@ -167,15 +167,15 @@ class BasePage:
             elif by == "x" or by == 'xpath':
                 try:
                     elements = ele.find_elements_by_xpath(selector)
-                    INFO("Had find the element \' {0} \' successful "
-                         "by {1} via value: {2} ".format(elements.text, by, selector))
+                    INFO("Had find the elements  successful "
+                         "by {0} via value: {1} ".format(by, selector))
                 except NoSuchElementException as e:
                     ERROR("NoSuchElementException: {}".format(e))
                     self.get_windows_img()
             elif by == "css" or by == 'css_selector':
                 try:
                     elements = ele.find_elements_by_css_selector(selector)
-                    INFO("Had find the element \'  \' successful "
+                    INFO("Had find the elements  successful "
                          "by {0} via value: {1} ".format(by, selector))
                 except NoSuchElementException as e:
                     ERROR("NoSuchElementException: {}".format(e))
@@ -186,8 +186,8 @@ class BasePage:
             if by == "i" or by == 'id':
                 try:
                     elements = self.driver.find_elements_by_id(selector)
-                    INFO("Had find the element \' {0} \' successful by {1} via value: {2}"
-                         .format(elements.text, by, selector))
+                    INFO("Had find the elements  successful by {0} via value: {1}"
+                         .format(by, selector))
                 except NoSuchElementException as e:
                     ERROR("NoSuchElementException: {}".format(e))
                     self.get_windows_img()  # take screenshot
@@ -204,15 +204,15 @@ class BasePage:
             elif by == "x" or by == 'xpath':
                 try:
                     elements = self.driver.find_elements_by_xpath(selector)
-                    INFO("Had find the element \' {0} \' successful "
-                         "by {1} via value: {2} " .format(elements.text, by, selector))
+                    INFO("Had find the elements  successful "
+                         "by {0} via value: {1} " .format(by, selector))
                 except NoSuchElementException as e:
                     ERROR("NoSuchElementException: {}".format(e))
                     self.get_windows_img()
             elif by == "css" or by == 'css_selector':
                 try:
                     elements = self.driver.find_elements_by_css_selector(selector)
-                    INFO("Had find the element \'  \' successful "
+                    INFO("Had find the elements  successful "
                          "by {0} via value: {1} " .format(by, selector))
                 except NoSuchElementException as e:
                     ERROR("NoSuchElementException: {}".format(e))
